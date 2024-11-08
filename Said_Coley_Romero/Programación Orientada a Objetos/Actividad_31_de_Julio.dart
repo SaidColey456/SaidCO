@@ -1,23 +1,23 @@
-class Zapato
+class Zapato {
+  String? marca;
+  int talla;
+  String? color;
 
-String? marca;
-int? talla;
-String? color;
 
-Zapato(int talla){
-  this.talla = talla;
-}
+  Zapato(this.talla, {this.marca, this.color});
 
-String detalles() {
-    return 'Marca: ${this.marca}, Talla: ${this.talla}, Color: ${this.color}';
+  String detalles() {
+    
+    return 'Marca: ${marca ?? "Desconocida"}, Talla: $talla, Color: ${color ?? "Desconocido"}';
+  }
 }
 
 void main() {
-    Zapato zapato = new Zapato(42);
-    zapato.marca = "Nike";
-    zapato.color = "Negro";
+  
+  Zapato zapato = Zapato(42);
+  zapato.marca = "Nike";
+  zapato.color = "Negro";
 
-    String detalles = zapato.detalles();
-    print(detalles);
-
+  String detalles = zapato.detalles();
+  print(detalles); 
 }
