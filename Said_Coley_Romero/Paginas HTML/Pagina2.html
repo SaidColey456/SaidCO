@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maquetado con Líneas y Bordes Redondeados</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+        }
+        header { 
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            padding: 45px;
+            text-align: center;
+            background-color: grey;
+            margin-bottom: 10px;
+        }
+        nav {
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            display: flex;
+            justify-content: space-evenly;
+            background-color: #1c6b5f;
+            padding: 25px 0;
+            margin-bottom: 10px;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .left-section, .right-section {
+            padding: 5px;
+            border: 2px solid rgb(8, 117, 81); 
+            border-radius: 15px; 
+            background-color: white;
+            width: 48%;
+        }
+        .left-section div {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 2px solid yellow; 
+            border-radius: 10px; 
+            height: 120px;
+        }
+        footer {
+            border: 2px solid orange; 
+            border-radius: 15px; 
+            padding: 10px;
+            text-align: center;
+            margin-top: 10px;
+            background-color: #1c6b5f;
+        }
+        .right-section div {
+            border-radius: 10px; 
+            margin-bottom: 10px;
+            height: 40px; 
+            background-color: rgb(8, 117, 81);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <p>Encabezado</p>
+    </header>
+    <nav>
+        <p>Menú 1</p>
+        <p>Menú 2</p>
+        <p>Menú 3</p>
+        <p>Menú 4</p>
+    </nav>
+    <div class="container">
+        <div class="left-section">
+            <div>
+                <p>Zona de texto o imagen 1</p>
+            </div>
+            <div>
+                <p>Zona de texto o imagen 2</p>
+            </div>
+        </div>
+        <div class="right-section">
+            <div>
+                <p>Campo 1</p>
+            </div>
+            <div>
+                <p>Campo 2</p>
+            </div>
+            <div>
+                <p>Campo 3</p>
+            </div>
+            <div>
+                <p>Campo 4</p>
+            </div>
+            <div>
+                <p>Campo 5</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Contáctenos / Línea gratuita 018000-00001 / Correo: preguntas@caninosyfelinos.com</p>
+    </footer>
+</body>
+</html>
