@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BANCOOP - Te ayuda a alcanzar tus metas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 10px;
+        }
+        header {
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            background-color: #d3d3d3;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+        header h1 {
+            font-size: 2rem;
+            color: #333;
+        }
+        header p {
+            color: #666;
+            margin-top: 5px;
+            font-size: 1rem;
+        }
+        nav {
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            display: flex;
+            justify-content: space-evenly;
+            background-color: #f7b800;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        nav p {
+            font-weight: bold;
+            color: #333;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .left-section,
+        .right-section {
+            width: 48%;
+            padding: 15px;
+            border-radius: 15px;
+            background-color: white;
+            border: 2px solid #ccc;
+        }
+        .left-section h3,
+        .right-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #333;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        .form-button {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .form-button button {
+            background-color: #f7b800;
+            color: #333;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-button button:hover {
+            background-color: #d5a700;
+        }
+        .transaction-section {
+            background-color: black;
+            border: 2px solid #e0d700;
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .transaction-section h3 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: yellow;
+        }
+        .transaction-section ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+        .transaction-section ul li {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            color: white;
+        }
+        .section-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: space-between;
+        }
+        .section-box .box {
+            width: 48%;
+            padding: 15px;
+            border-radius: 15px;
+            background-color: #f5f5f5;
+            border: 2px solid #ccc;
+            text-align: center;
+        }
+        .section-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .section-box p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        footer {
+            text-align: center;
+            background-color: black;
+            color: white;
+            padding: 10px;
+            border-radius: 15px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>BANCOOP</h1>
+        <p>Te ayuda a alcanzar tus metas</p>
+    </header>
+    <nav>
+        <p>.Créditos.</p>
+        <p>.Leasing.</p>
+        <p>.Ahorros.</p>
+        <p>.Servicio al cliente.</p>
+    </nav>
+    <div class="container">
+        <!-- Sección de la izquierda -->
+        <div class="left-section">
+            <h3>INGRESA A TU CUENTA</h3>
+            <div class="form-group">
+                <label for="cuenta">Cuenta:</label>
+                <input type="text" id="cuenta" placeholder="Número de cuenta">
+            </div>
+            <div class="form-group">
+                <label for="tipo">Tipo:</label>
+                <input type="text" id="tipo" placeholder="Tipo de cuenta">
+            </div>
+            <div class="form-group">
+                <label for="clave">Clave:</label>
+                <input type="password" id="clave" placeholder="Clave de acceso">
+            </div>
+            <div class="form-button">
+                <button>Ingresar</button>
+            </div>
+            <div class="transaction-section">
+                <h3>TRANSACCIONES</h3>
+                <ul>
+                    <li>Banca personal</li>
+                    <li>Banca empresarial</li>
+                    <li>Banca seguros</li>
+                    <li>Pago de facturas</li>
+                </ul>
+                <h3>TARJETAS DE CRÉDITO</h3>
+                <ul>
+                    <li>Credi Visa</li>
+                    <li>Credi Mastercard</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Sección de la derecha -->
+        <div class="right-section">
+            <h3>SOLICITA NUESTROS PRODUCTOS</h3>
+            <div class="section-box">
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Crédito Vehículos">
+                    <p>Crédito Vehículos</p>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Crédito Hipotecario">
+                    <p>Crédito Hipotecario</p>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Ahorro Estudiantil">
+                    <p>Ahorro Estudiantil</p>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Tarjetas de Crédito">
+                    <p>Tarjetas de Crédito</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Contáctenos | Línea gratuita 018000-00001 | Banco entidad financiera - Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
