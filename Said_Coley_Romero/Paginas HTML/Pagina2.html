@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maquetado con Líneas y Bordes Redondeados</title>
+    <title>Centro Veterinario Caninos y Felinos</title>
     <style>
         * {
             margin: 0;
@@ -12,15 +12,20 @@
         }
         body {
             font-family: Arial, sans-serif;
-            background-color: white;
+            background-color: #f3f3f3;
+            padding: 10px;
         }
-        header { 
+        header {
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
-            padding: 45px;
+            padding: 20px;
             text-align: center;
-            background-color: grey;
+            background-color: #d3d3d3; 
             margin-bottom: 10px;
+        }
+        header h1 {
+            font-size: 1.8rem;
+            color: #444;
         }
         nav {
             border-bottom-left-radius: 20px;
@@ -28,83 +33,167 @@
             display: flex;
             justify-content: space-evenly;
             background-color: #1c6b5f;
-            padding: 25px 0;
+            padding: 10px 0;
             margin-bottom: 10px;
+        }
+        nav p {
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
         }
         .container {
             display: flex;
             justify-content: space-between;
             gap: 10px;
         }
-        .left-section, .right-section {
-            padding: 5px;
-            border: 2px solid rgb(8, 117, 81); 
-            border-radius: 15px; 
+        .left-section {
+            padding: 15px;
+            border: 2px solid #007965; 
+            border-radius: 15px;
             background-color: white;
             width: 48%;
         }
         .left-section div {
             margin-bottom: 15px;
             padding: 10px;
-            border: 2px solid yellow; 
-            border-radius: 10px; 
+            border: 2px dashed #d3a92c; 
+            border-radius: 10px;
+            background-color: #fff8dc;
             height: 120px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .left-section img {
+            height: 80px;
+            border-radius: 10px;
+        }
+        .right-section {
+            padding: 15px;
+            border: 2px solid #007965; 
+            border-radius: 15px;
+            background-color: #1c6b5f;
+            width: 48%;
+            color: white;
+        }
+        .right-section h2 {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="date"],
+        .form-group input[type="time"] {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+        .form-group input:focus {
+            outline: 2px solid #007965;
+        }
+        .form-button {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .form-button button {
+            background-color: white;
+            color: #007965;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-button button:hover {
+            background-color: #007965;
+            color: white;
         }
         footer {
-            border: 2px solid orange; 
-            border-radius: 15px; 
+            border: 2px solid #d9861a; 
+            border-radius: 15px;
             padding: 10px;
             text-align: center;
             margin-top: 10px;
+            background-color: #e6e6e6;
             background-color: #1c6b5f;
         }
-        .right-section div {
-            border-radius: 10px; 
-            margin-bottom: 10px;
-            height: 40px; 
-            background-color: rgb(8, 117, 81);
+        footer p {
+            font-size: 0.9rem;
+            color: white;
         }
     </style>
 </head>
 <body>
     <header>
-        <p>Encabezado</p>
+        <h1>CENTRO VETERINARIO</h1>
+        <h1>Caninos y Felinos</h1>
     </header>
     <nav>
-        <p>Menú 1</p>
-        <p>Menú 2</p>
-        <p>Menú 3</p>
-        <p>Menú 4</p>
+        <p>.Servicios.</p>
+        <p>.Productos.</p>
+        <p>.Guardería.</p>
+        <p>.Promociones.</p>
     </nav>
     <div class="container">
         <div class="left-section">
             <div>
-                <p>Zona de texto o imagen 1</p>
+                <img src="https://via.placeholder.com/80" alt="Perro">
+                <p>Cuidados y educación para su perro</p>
             </div>
             <div>
-                <p>Zona de texto o imagen 2</p>
+                <img src="https://via.placeholder.com/80" alt="Perro en viaje">
+                <p>Salir de viaje con su mascota</p>
             </div>
         </div>
         <div class="right-section">
-            <div>
-                <p>Campo 1</p>
+            <h2>Solicitar cita médica</h2>
+            <div class="form-group">
+                <label for="mascota">Mascota:</label>
+                <input type="text" id="mascota" placeholder="Ingrese Nombre">
             </div>
-            <div>
-                <p>Campo 2</p>
+            <div class="form-group">
+                <label for="edad">Edad:</label>
+                <input type="text" id="edad" placeholder="Ingrese Edad">
             </div>
-            <div>
-                <p>Campo 3</p>
+            <div class="form-group">
+                <label for="raza">Raza:</label>
+                <input type="text" id="raza" placeholder="Ingrese Raza">
             </div>
-            <div>
-                <p>Campo 4</p>
+            <div class="form-group">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha">
             </div>
-            <div>
-                <p>Campo 5</p>
+            <div class="form-group">
+                <label for="hora">Hora:</label>
+                <input type="time" id="hora">
+            </div>
+            <div class="form-group">
+                <label for="amo">Amo:</label>
+                <input type="text" id="amo" placeholder="Ingrese Nombre">
+            </div>
+            <div class="form-button">
+                <button>VALIDAR CITA</button>
             </div>
         </div>
     </div>
     <footer>
-        <p>Contáctenos / Línea gratuita 018000-00001 / Correo: preguntas@caninosyfelinos.com</p>
+        <p>Contáctenos | Línea gratuita 018000-00001 | Correo: preguntas@caninosyfelinos.com</p>
     </footer>
 </body>
 </html>
