@@ -1,4 +1,7 @@
+import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../models/user.dart';
 
 
 abstract class AppEvent {}
@@ -13,7 +16,10 @@ abstract class AppState {}
 
 class AppInitial extends AppState {}
 
-class AppSuccess extends AppState {}
+class AppSuccess extends AppState {
+  final User user;
+  AppSuccess(this.user);
+}
 
 class AppFailure extends AppState {}
 
@@ -23,8 +29,15 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       emit(AppInitial());
     });
 
-    on<AppLoaded>((event, emit) {
-      emit(AppSuccess());
+    on<AppLoaded>((event, emit) async {
+      try {
+        final data = await rootBundle.loadString('assets/user.json');
+        final jsonMap = json.decode(data);
+        final user = User.fromJson(jsonMap);
+        emit(AppSuccess(user));
+      } catch (e) {
+        emit(AppFailure());
+      }
     });
 
     on<AppError>((event, emit) {
