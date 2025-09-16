@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'feature/login/bloc/login_bloc.dart';
 import 'feature/login/presentation/views/login_initial_view.dart';
 import 'feature/login/presentation/views/login_loading_view.dart';
 import 'feature/login/presentation/views/login_error_view.dart';
 import 'feature/home/presentation/views/home_view.dart';
-import 'feature/home/bloc/home_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,46 +18,32 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => LoginBloc()),
-        BlocProvider(create: (_) => HomeBloc()),
+        BlocProvider(
+          create: (_) => LoginBloc(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Exotic Flutter App',
+        title: 'Actividad Flutter',
         theme: ThemeData(
-          brightness: Brightness.light,
-          primaryColor: Colors.deepPurple,
-          scaffoldBackgroundColor: Colors.white,
-          textTheme: GoogleFonts.poppinsTextTheme(
-            Theme.of(context).textTheme,
-          ),
-          appBarTheme: AppBarTheme(
-            backgroundColor: Colors.deepPurpleAccent,
-            foregroundColor: Colors.white,
-            titleTextStyle: GoogleFonts.lobster(
-              fontSize: 24,
-              color: Colors.white,
-            ),
-          ),
+          primarySwatch: Colors.deepPurple,
+          textTheme: GoogleFonts.poppinsTextTheme(),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-              backgroundColor: Colors.deepPurple,
-              foregroundColor: Colors.white,
-              textStyle: GoogleFonts.poppins(fontSize: 16),
+              textStyle: const TextStyle(fontSize: 16),
               elevation: 8,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
             ),
           ),
         ),
-        home: const LoginInitialView(),
+        home: LoginInitialView(),
         routes: {
-          '/login': (_) => const LoginInitialView(),
-          '/loading': (_) => const LoginLoadingView(),
-          '/error': (_) => const LoginErrorView(),
-          '/home': (_) => const HomeView(),
+          '/login': (_) => LoginInitialView(),
+          '/loading': (_) => LoginLoadingView(),
+          '/error': (_) => LoginErrorView(),
+          '/home': (_) => HomeView(),
         },
       ),
     );

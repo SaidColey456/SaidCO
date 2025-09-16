@@ -4,13 +4,14 @@ import 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(LoginInitial()) {
-    on<LoginButtonPressed>((event, emit) async {
+    on<LoginSubmitted>((event, emit) async {
       emit(LoginLoading());
-      await Future.delayed(const Duration(seconds: 2)); // simulando login
-      if (event.username == "said" && event.password == "1234") {
+      await Future.delayed(const Duration(seconds: 2));
+
+      if (event.email == "admin123@gmail.com" && event.password == "12345") {
         emit(LoginSuccess());
       } else {
-        emit(LoginFailure("Usuario o contraseña incorrectos"));
+        emit(LoginFailure("Credenciales incorrectas"));
       }
     });
   }
