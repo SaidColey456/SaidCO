@@ -6,12 +6,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(LoginInitial()) {
     on<LoginSubmitted>((event, emit) async {
       emit(LoginLoading());
-      await Future.delayed(const Duration(seconds: 2));
+
+      await Future.delayed(const Duration(seconds: 2)); // Simulación
 
       if (event.email == "admin123@gmail.com" && event.password == "12345") {
-        emit(LoginSuccess());
+        emit(LoginSuccess(event.email)); // <- PASAMOS EL EMAIL
       } else {
-        emit(LoginFailure("Credenciales incorrectas"));
+        emit(LoginFailure("Correo o contraseña incorrectos"));
       }
     });
   }

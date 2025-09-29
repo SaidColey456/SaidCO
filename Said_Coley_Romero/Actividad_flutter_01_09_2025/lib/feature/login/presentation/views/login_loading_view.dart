@@ -6,12 +6,8 @@ class LoginLoadingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: Color(0xFFF7F0FF),
       body: Center(
-        child: CircularProgressIndicator(
-          color: Colors.deepPurple,
-          strokeWidth: 6,
-        ),
+        child: CircularProgressIndicator(),
       ),
     );
   }
