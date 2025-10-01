@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../bloc/login_bloc.dart';
+import '../../bloc/login_event.dart';
 
 class LoginInitialView extends StatefulWidget {
   const LoginInitialView({super.key});
@@ -11,68 +14,37 @@ class _LoginInitialViewState extends State<LoginInitialView> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  // credenciales de prueba
-  final String validEmail = "admin@test.com";
-  final String validPassword = "123456";
-
-  void _login() {
-    final email = _emailController.text.trim();
-    final password = _passwordController.text.trim();
-
-    if (email == validEmail && password == validPassword) {
-      // Navegar primero a loading
-      Navigator.pushReplacementNamed(context, '/loading');
-
-      // Simula carga
-      Future.delayed(const Duration(seconds: 2), () {
-        if (context.mounted) {
-          Navigator.pushReplacementNamed(context, '/home');
-        }
-      });
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Credenciales inválidas")),
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                "Iniciar Sesión",
-                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 30),
-              TextField(
-                controller: _emailController,
-                decoration: const InputDecoration(
-                  labelText: "Correo",
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              const SizedBox(height: 20),
-              TextField(
-                controller: _passwordController,
-                obscureText: true,
-                decoration: const InputDecoration(
-                  labelText: "Contraseña",
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              const SizedBox(height: 30),
-              ElevatedButton(
-                onPressed: _login,
-                child: const Text("Ingresar"),
-              ),
-            ],
-          ),
+      appBar: AppBar(title: const Text("Login")),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(
+              controller: _emailController,
+              decoration: const InputDecoration(labelText: "Email"),
+            ),
+            const SizedBox(height: 16),
+            TextField(
+              controller: _passwordController,
+              decoration: const InputDecoration(labelText: "Password"),
+              obscureText: true,
+            ),
+            const SizedBox(height: 32),
+            ElevatedButton(
+              onPressed: () {
+                final email = _emailController.text.trim();
+                final password = _passwordController.text.trim();
+                context.read<LoginBloc>().add(
+                      LoginSubmitted(email: email, password: password),
+                    );
+              },
+              child: const Text("Login"),
+            ),
+          ],
         ),
       ),
     );
