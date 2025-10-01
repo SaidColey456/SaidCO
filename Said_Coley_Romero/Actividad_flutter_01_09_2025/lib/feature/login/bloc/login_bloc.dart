@@ -1,22 +1,26 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'login_event.dart';
 import 'login_state.dart';
+import '../../data/services/api_service.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc() : super(LoginInitial()) {
-    on<LoginSubmitted>(_onLoginSubmitted);
-  }
+  final ApiService apiService;
 
-  Future<void> _onLoginSubmitted(
-      LoginSubmitted event, Emitter<LoginState> emit) async {
-    emit(LoginLoading());
+  LoginBloc(this.apiService) : super(LoginInitial()) {
+    on<LoginSubmitted>((event, emit) async {
+      emit(LoginLoading());
 
-    await Future.delayed(const Duration(seconds: 2)); // simulamos login
+      try {
+        final response = await apiService.login(event.username, event.password);
 
-    if (event.email == "admin123@gmail.com" && event.password == "12345") {
-      emit(LoginSuccess(event.email));
-    } else {
-      emit(const LoginFailure("Credenciales incorrectas"));
-    }
+        if (response["status"] == "success") {
+          emit(LoginSuccess());
+        } else {
+          emit(LoginFailure("Usuario o contraseña incorrectos"));
+        }
+      } catch (e) {
+        emit(LoginFailure("Error de red: $e"));
+      }
+    });
   }
 }

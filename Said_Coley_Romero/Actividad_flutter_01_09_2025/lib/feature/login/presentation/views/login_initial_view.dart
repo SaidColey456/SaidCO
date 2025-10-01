@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../bloc/login_bloc.dart';
 import '../../bloc/login_event.dart';
 
@@ -11,38 +12,57 @@ class LoginInitialView extends StatefulWidget {
 }
 
 class _LoginInitialViewState extends State<LoginInitialView> {
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Login")),
+      appBar: AppBar(
+        title: const Text("Login"),
+        centerTitle: true,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
-              controller: _emailController,
-              decoration: const InputDecoration(labelText: "Email"),
+              controller: _usernameController,
+              decoration: const InputDecoration(
+                labelText: "Usuario",
+                border: OutlineInputBorder(),
+              ),
             ),
             const SizedBox(height: 16),
             TextField(
               controller: _passwordController,
-              decoration: const InputDecoration(labelText: "Password"),
               obscureText: true,
+              decoration: const InputDecoration(
+                labelText: "Contraseña",
+                border: OutlineInputBorder(),
+              ),
             ),
-            const SizedBox(height: 32),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                final email = _emailController.text.trim();
+                final username = _usernameController.text.trim();
                 final password = _passwordController.text.trim();
-                context.read<LoginBloc>().add(
-                      LoginSubmitted(email: email, password: password),
-                    );
+
+                if (username.isNotEmpty && password.isNotEmpty) {
+                  // Lanza el evento al LoginBloc
+                  context.read<LoginBloc>().add(
+                        LoginSubmitted(username: username, password: password),
+                      );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Por favor ingrese usuario y contraseña"),
+                    ),
+                  );
+                }
               },
-              child: const Text("Login"),
+              child: const Text("Iniciar sesión"),
             ),
           ],
         ),

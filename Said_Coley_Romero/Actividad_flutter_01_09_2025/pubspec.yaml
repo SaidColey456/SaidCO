@@ -1,6 +1,6 @@
-name: actividad_flutter
-description: Una actividad Flutter con login y home usando Bloc.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+name: actividad_flutter_01_09_2025
+description: "Actividad: Bloc + Cubit + consumo de JSONPlaceholder"
+publish_to: 'none' # remove this if you want to publish
 
 version: 1.0.0+1
 
@@ -10,17 +10,22 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  
 
-  flutter_bloc: ^8.1.3
-  google_fonts: ^6.2.1
+  # State management
+  flutter_bloc: ^8.1.6
+  equatable: ^2.0.5
 
+  # HTTP requests
+  http: ^0.13.6
+
+  # Icons
   cupertino_icons: ^1.0.8
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  flutter_lints: ^3.0.1
+  flutter_lints: ^2.0.0
 
 flutter:
   uses-material-design: true
