@@ -4,31 +4,36 @@ import 'package:http/http.dart' as http;
 class ApiService {
   final String baseUrl = "https://jsonplaceholder.typicode.com";
 
-  /// Simulación de login usando POST en /posts
-  Future<Map<String, dynamic>> login(String username, String password) async {
+  Future<bool> login(String username, String password) async {
+    await Future.delayed(const Duration(seconds: 1));
+    return username == "admin123@gmail.com" && password == "12345";
+  }
+
+  Future<List<Map<String, dynamic>>> fetchUsers() async {
+    final response = await http.get(Uri.parse("$baseUrl/users"));
+    if (response.statusCode == 200) {
+      final List data = jsonDecode(response.body);
+      return data.map((e) => e as Map<String, dynamic>).toList();
+    } else {
+      throw Exception("Error al cargar usuarios");
+    }
+  }
+
+  Future<Map<String, dynamic>> createPost(String title, String body, int userId) async {
     final response = await http.post(
       Uri.parse("$baseUrl/posts"),
-      headers: {"Content-Type": "application/json"},
+      headers: {"Content-Type": "application/json; charset=UTF-8"},
       body: jsonEncode({
-        "username": username,
-        "password": password,
+        "title": title,
+        "body": body,
+        "userId": userId,
       }),
     );
 
     if (response.statusCode == 201) {
-      return {"status": "success", "data": jsonDecode(response.body)};
-    } else {
-      return {"status": "error", "message": "Credenciales inválidas"};
-    }
-  }
-
-  /// Obtener lista de usuarios (GET /users)
-  Future<List<dynamic>> fetchUsers() async {
-    final response = await http.get(Uri.parse("$baseUrl/users"));
-    if (response.statusCode == 200) {
       return jsonDecode(response.body);
     } else {
-      throw Exception("Error al obtener usuarios");
+      throw Exception("Error al crear post");
     }
   }
 }

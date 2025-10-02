@@ -8,7 +8,7 @@ import 'feature/data/services/api_service.dart';
 import 'feature/login/presentation/views/login_initial_view.dart';
 import 'feature/login/presentation/views/login_loading_view.dart';
 import 'feature/login/presentation/views/login_error_view.dart';
-import 'feature/login/presentation/views/home_view.dart';
+import 'feature/home/presentation/views/home_view.dart';
 
 void main() {
   runApp(const MyApp());

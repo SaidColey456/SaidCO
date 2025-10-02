@@ -11,15 +11,15 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       emit(LoginLoading());
 
       try {
-        final response = await apiService.login(event.username, event.password);
+        final success = await apiService.login(event.username, event.password);
 
-        if (response["status"] == "success") {
+        if (success) {
           emit(LoginSuccess());
         } else {
-          emit(LoginFailure("Usuario o contraseña incorrectos"));
+          emit(LoginFailure(message: "Usuario o contraseña incorrectos"));
         }
-      } catch (e) {
-        emit(LoginFailure("Error de red: $e"));
+      } catch (_) {
+        emit(LoginFailure(message: "Error en el servidor, intente más tarde"));
       }
     });
   }
